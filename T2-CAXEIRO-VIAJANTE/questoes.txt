@@ -1,0 +1,59 @@
+*****************************************************************************************************
+T290 - Resolução de Problemas com Grafos
+Orientador: Prof. Me Ricardo Carubbi
+*****************************************************************************************************
+
+Trabalho: Problema do Caixeiro Viajante
+
+Informe abaixo o(s) nome(s):
+- Aluno(a) 1: Anna Lara Magalhães
+- Aluno(a) 2: Carla Miranda de Souza
+
+Q1. Explique como você implementou a heurística de inserção pelo vizinho mais próximo.
+Comente também como você atualiza as ligações da lista encadeada circular após inserir o novo ponto.
+
+Resposta: Implementamos a heurística do vizinho mais próximo de duas formas: ingênua e usando kdtree. Na kdtree, para cada ponto 
+novo, a árvore é percorrida comparando alternadamente as coordenadas x e y em cada nível: se a coordenada do novo 
+ponto for menor que a do nó, exploramos a subárvore esquerda; se for maior, exploramos a direita. Se houver chance de encontrar 
+um ponto mais próximo na outra subárvore, também verificamos. Depois de achar o ponto mais próximo, criamos um novo nó para o 
+ponto e atualizamos a lista circular: o novo nó aponta para o próximo do vizinho e o vizinho passa a apontar para o novo nó, 
+mantendo o ciclo fechado.
+
+
+Q2. Explique por que é melhor usar uma lista encadeada circular em vez de um vetor.
+Considere a complexidade das operações de inserção e remoção de pontos.
+
+Resposta: Usamos uma lista encadeada circular porque facilita a inserção de novos pontos no ciclo. Com um vetor, 
+para inserir ou remover um ponto no meio ou no início, é preciso deslocar todos os outros elementos, o que custa O(n). 
+Na lista circular, só precisa ajustar as ligações do ponto anterior e do novo ponto para manter o ciclo fechado, o que custa O(1). 
+Além disso, ela permite percorrer o ciclo sem se preocupar com o final, já que o último ponto aponta para o primeiro.
+
+
+Q3. Preencha os comprimentos calculados pela heurística do vizinho mais próximo.
+
+| Arquivo de dados | Vizinho mais próximo |
+| ---------------- | -------------------- |
+| tsp10.txt        |      1566.136        |
+| tsp100.txt       |      7389.929        |
+| tsp1000.txt      |      27868.710       |
+| usa13509.txt     |      77449.979       |
+
+Q4. Realize a análise de tempo abaixo:
+
+- Estime o tempo de execução (em segundos) da heurística.
+- Execute a heurística para \(n = 1000\) e dobre \(n\) repetidamente até que o tempo de execução ultrapasse 60 segundos.
+- Utilize o **TSPTimer** com a opção **-Xint** para desativar otimizações do compilador.
+
+| n      | Tempo (s) ingênuo | Tempo (s) com KdTree |
+| ------ | ----------------- | -------------------- |
+| 1000   |       0.028       |        0.035         |
+| 2000   |       0.101       |        0.038         |
+| 4000   |       0.374       |        0.075         |
+| 8000   |       1.597       |        0.152         |
+| 16000  |       6.096       |        0.336         |
+| 32000  |       24.201      |        0.76          |
+| 64000  |       97.762      |        1.563         |
+| 128000 |                   |        3.281         |
+| 256000 |                   |        6.896         |
+| 512000 |                   |        15.02         |
+| 1024000|                   |        32.115        |
