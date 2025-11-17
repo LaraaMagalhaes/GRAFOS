@@ -1,12 +1,12 @@
-# Repositório de Projetos - Teoria dos Grafos
+# Graph Theory Projects
 
-Este repositório armazena as implementações e trabalhos desenvolvidos para a disciplina de Teoria dos Grafos.
+This repository stores implementations and assignments developed for the Graph Theory course.
 
 ---
 
-## 🛠️ Tecnologias
-* [Java]
+## 🛠️ Technologies
+* Java
 
-## 👤 Autor
+## 👤 Authors
 * Anna Lara Magalhães
 * Carla Miranda
